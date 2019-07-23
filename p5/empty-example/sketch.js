@@ -1,6 +1,9 @@
 //let capture;
 let name = "";
-let birthday = "";
+let month;
+let day;
+let birthday = { month, day};
+let sign = "";
 let inp, birthInput;
 let button;
 let rowLength;
@@ -57,18 +60,31 @@ function changeBG() {
   inp.remove();
   button.remove();
   birthInput.remove();
-    renderReturnData();
+  renderReturnData();
 }
  
 function nameEvent() {
  name = this.value();
- fullscreen(true);
 }
 
 function birthdayEvent() {
-  birthday = this.value();
+  var inputBirthday = this.value();
+  var birthArray = inputBirthday.split("/");
+  month = parseInt(birthArray[0]);
+  day = parseInt(birthArray[1]);
+
+  if (!isNaN(month) || !isNaN(day)){
+    birthday = { month, day };
   }
+}
 
 function renderReturnData() {
-  console.log("Hello, " + name + "\nYou were born on " + birthday);
+  if (isNaN(birthday.month) || isNaN(birthday.day)){
+    alert("Try again. Format: MM-DD-YYYY");
+    setup();
+  }
+
+  sign = getHoroscopeSign(birthday);
+
+  alert("Hello, " + name + "\nYour sign is " + sign + getSignEmoji(sign));
 }
