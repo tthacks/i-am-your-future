@@ -1,6 +1,9 @@
 //let capture;
 let name = "";
-let birthday = "";
+let month;
+let day;
+let birthday = { month, day};
+let sign = "";
 let inp, birthInput;
 let button;
 let inputComplete = false;
@@ -10,20 +13,18 @@ let columnLength;
 function setup() {
   createCanvas(displayWidth, displayHeight);
   background(0);
-  name = "";
-  birthday = "";
   button = createButton('tell me my future');
   button.position(width/2 + 100, height/2 + 80);
   button.mousePressed(changeBG);
- inp = createInput('');
- inp.position(width/2, height/2)
- inp.input(nameEvent);
+  inp = createInput('');
+  inp.position(width/2, height/2)
+  inp.input(nameEvent);
 
- birthInput = createInput('');
- birthInput.position(width/2, height/2 + 40);
- birthInput.input(birthdayEvent);
-
- //vis stuff
+  birthInput = createInput('');
+  birthInput.position(width/2, height/2 + 40);
+  birthInput.input(birthdayEvent);
+  
+  //vis stuff
  rowLength = width / 10 + 1;
  columnLength = height / 10 + 1;
  bubbles = new Array();
@@ -44,18 +45,31 @@ function changeBG() {
   inp.remove();
   button.remove();
   birthInput.remove();
-    renderReturnData();
+  renderReturnData();
 }
  
 function nameEvent() {
  name = this.value();
- fullscreen(true);
 }
 
 function birthdayEvent() {
-  birthday = this.value();
+  var inputBirthday = this.value();
+  var birthArray = inputBirthday.split("/");
+  month = parseInt(birthArray[0]);
+  day = parseInt(birthArray[1]);
+
+  if (!isNaN(month) || !isNaN(day)){
+    birthday = { month, day };
   }
+}
 
 function renderReturnData() {
-  console.log("Hello, " + name + "\nYou were born on " + birthday);
+  if (isNaN(birthday.month) || isNaN(birthday.day)){
+    alert("Try again. Format: MM-DD-YYYY");
+    setup();
+  }
+
+  sign = getHoroscopeSign(birthday);
+
+  alert("Hello, " + name + "\nYour sign is " + sign + getSignEmoji(sign));
 }
