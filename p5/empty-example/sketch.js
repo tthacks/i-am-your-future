@@ -138,6 +138,7 @@ function renderReturnData() {
   }
 
   sign = getHoroscopeSign(birthday);
+  console.log(getFortune(sign, "love"));
 
   alert("Hello, " + name + "\nYour sign is " + sign + getSignEmoji(sign));
 }
