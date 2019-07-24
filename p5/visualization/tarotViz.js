@@ -115,38 +115,38 @@ let TarotVizEnums = [
     
   ];
   
-  let tarot;
+  let vTarot;
   
-  function setup() {
-    createCanvas(900, 700);
+  function setupViz() {
+    // createCanvas(900, 700);
     noStroke();
-    tarot = new Tarot(TarotVizEnums[4]);
+    vTarot = new Tarot(TarotVizEnums[tarot.value]);
   }
   
-  function draw() {
+  function drawViz() {
     background(10, 10); // translucent background (creates trails)
   
     // make a x and y grid of ellipses
-    for (let x = 0; x <= width; x = x + random(tarot.ellipseDistanceX, tarot.ellipseDistanceX+tarot.randomX)) {
-      for (let y = 0; y <= height; y = y + random(tarot.ellipseDistanceY, tarot.ellipseDistanceY+tarot.randomY)) {
+    for (let x = 0; x <= width; x = x + random(vTarot.ellipseDistanceX, vTarot.ellipseDistanceX+vTarot.randomX)) {
+      for (let y = 0; y <= height; y = y + random(vTarot.ellipseDistanceY, vTarot.ellipseDistanceY+vTarot.randomY)) {
         // starting point of each circle depends on mouse position
-        const xAngle = map(mouseX, 0, width, -4 * PI, 4 * PI, true);
-        const yAngle = map(mouseY, 0, height, -4 * PI, 4 * PI, true);
+        const xAngle = map(handPosX, 0, width, -4 * PI, 4 * PI, true);
+        const yAngle = map(handPosY, 0, height, -4 * PI, 4 * PI, true);
         // and also varies based on the particle's location
         const angle = xAngle * (x / width) + yAngle * (y / height);
   
         // each particle moves in a circle
-        const myX = x + 30 * cos(2 * PI * tarot.t + angle);
-        const myY = y + 30 * sin(2 * PI * tarot.t + angle);
+        const myX = x + 30 * cos(2 * PI * vTarot.t + angle);
+        const myY = y + 30 * sin(2 * PI * vTarot.t + angle);
   
-        fill(random(tarot.r, tarot.r+tarot.colorRandom), 
-             random(tarot.g, tarot.g+tarot.colorRandom), 
-             random(tarot.b, tarot.b+tarot.colorRandom));
-        ellipse(myX, myY, tarot.lineWidth); // draw particle
+        fill(random(vTarot.r, vTarot.r+vTarot.colorRandom), 
+             random(vTarot.g, vTarot.g+vTarot.colorRandom), 
+             random(vTarot.b, vTarot.b+vTarot.colorRandom));
+        ellipse(myX, myY, vTarot.lineWidth); // draw particle
       }
     }
   
-    tarot.t = tarot.t + tarot.timeIncrement;
+    vTarot.t = vTarot.t + vTarot.timeIncrement;
   }
   
   class Tarot {

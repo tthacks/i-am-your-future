@@ -123,11 +123,14 @@ function qrToTarot(code) {
     }
     state = states.VIZ;
     tarot = TarotEnum.properties[parseInt(code.data)];
+    setupViz();
+    setTimeout(transitionToEnd, 10000);
 }
 
 function transitionToEnd() {
     state = states.END;
-    
+    //alert("Hello, " + name + "\nYour sign is " + sign + getSignEmoji(sign));
+    alert(getFortune(sign, tarot.type.toLowerCase()));
 }
 
 

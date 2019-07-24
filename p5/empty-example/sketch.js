@@ -75,30 +75,7 @@ function draw() {
   } else if (state === states.QR) {
     // TODO: draw something when we need QR code
   } else if (state === states.VIZ) {
-    background(10, 10); // translucent background (creates trails)
-
-    // make a x and y grid of ellipses
-    for (let x = 0; x <= width; x = x + random(ellipseDistanceX, ellipseDistanceX+randomX)) {
-      for (let y = 0; y <= height; y = y + random(ellipseDistanceY, ellipseDistanceY+randomY)) {
-        // starting point of each circle depends on mouse position
-        const xAngle = map(handPosX, 0, width, -4 * PI, 4 * PI, true);
-        const yAngle = map(handPosY, 0, height, -4 * PI, 4 * PI, true);
-        // and also varies based on the particle's location
-        const angle = xAngle * (x / width) + yAngle * (y / height);
-
-        // each particle moves in a circle
-        const myX = x + 30 * cos(2 * PI * t + angle);
-        const myY = y + 30 * sin(2 * PI * t + angle);
-
-        fill(random(r, r+colorRandom), 
-            random(g, g+colorRandom), 
-            random(b, b+colorRandom));
-        ellipse(myX, myY, lineWidth); // draw particle
-      }
-    }
-
-  t = t + timeIncrement;
-    // TODO: use handPosX and handPosY to do a cool visualization
+    drawViz();
   } else if (state === states.END) {
     // TODO: draw something to show the user a fortune
   }
@@ -138,7 +115,4 @@ function renderReturnData() {
   }
 
   sign = getHoroscopeSign(birthday);
-  console.log(getFortune(sign, "love"));
-
-  alert("Hello, " + name + "\nYour sign is " + sign + getSignEmoji(sign));
 }
