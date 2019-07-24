@@ -1,8 +1,161 @@
 /* Interactive visualization for Tarot reader */
 
 let TarotVizEnums = [
-    /****** LOVE ******/
-    // 0. THELOVERS
+    /************************* CAREER *************************/
+    // SIXOFPENTACLES: 1,
+    {
+        t: 0,
+        timeIncrement: 0.01,
+        r: 1,
+        g: 1,
+        b: 1,
+        colorRandom: 250,
+        lineWidth: 15,
+        ellipseDistanceX: 50,
+        ellipseDistanceY: 30,
+        randomX: 0,
+        randomY: 0    
+    },
+  
+    // HANGEDWOMAN: 2,
+    {
+        t: 0,
+        timeIncrement: 0.01,
+        r: 1,
+        g: 1,
+        b: 1,
+        colorRandom: 250,
+        lineWidth: 15,
+        ellipseDistanceX: 50,
+        ellipseDistanceY: 30,
+        randomX: 0,
+        randomY: 0    
+    },
+  
+    // KINGOFCUPS: 3,
+    {
+        t: 0,
+        timeIncrement: 0.01,
+        r: 1,
+        g: 1,
+        b: 1,
+        colorRandom: 250,
+        lineWidth: 15,
+        ellipseDistanceX: 50,
+        ellipseDistanceY: 30,
+        randomX: 0,
+        randomY: 0    
+    },
+  
+    // FOUROFSWORDS: 4,
+    {
+        t: 0,
+        timeIncrement: 0.01,
+        r: 1,
+        g: 1,
+        b: 1,
+        colorRandom: 250,
+        lineWidth: 15,
+        ellipseDistanceX: 50,
+        ellipseDistanceY: 30,
+        randomX: 0,
+        randomY: 0    
+    },
+  
+    // EIGHTOFSWORDS: 5,
+    {
+        t: 0,
+        timeIncrement: 0.01,
+        r: 1,
+        g: 1,
+        b: 1,
+        colorRandom: 250,
+        lineWidth: 15,
+        ellipseDistanceX: 50,
+        ellipseDistanceY: 30,
+        randomX: 0,
+        randomY: 0    
+    },
+  
+    /************************* LIFE *************************/
+   
+    // HIGHPRIESTESS: 6,
+    {
+        t: 0,
+        timeIncrement: 0.01,
+        r: 1,
+        g: 1,
+        b: 1,
+        colorRandom: 250,
+        lineWidth: 15,
+        ellipseDistanceX: 50,
+        ellipseDistanceY: 30,
+        randomX: 0,
+        randomY: 0    
+    },
+  
+    // ACEOFCUPS: 7,
+    {
+        t: 0,
+        timeIncrement: 0.01,
+        r: 1,
+        g: 1,
+        b: 1,
+        colorRandom: 250,
+        lineWidth: 15,
+        ellipseDistanceX: 50,
+        ellipseDistanceY: 30,
+        randomX: 0,
+        randomY: 0    
+    },
+  
+    // THEDEVIL: 8,
+    {
+        t: 0,
+        timeIncrement: 0.01,
+        r: 1,
+        g: 1,
+        b: 1,
+        colorRandom: 250,
+        lineWidth: 15,
+        ellipseDistanceX: 50,
+        ellipseDistanceY: 30,
+        randomX: 0,
+        randomY: 0    
+    },
+  
+    // PRINCESSOFSWORDS: 9,
+    {
+        t: 0,
+        timeIncrement: 0.01,
+        r: 1,
+        g: 1,
+        b: 1,
+        colorRandom: 250,
+        lineWidth: 15,
+        ellipseDistanceX: 50,
+        ellipseDistanceY: 30,
+        randomX: 0,
+        randomY: 0    
+    },
+  
+    // HIEROPHANT: 10,
+    {
+        t: 0,
+        timeIncrement: 0.01,
+        r: 1,
+        g: 1,
+        b: 1,
+        colorRandom: 250,
+        lineWidth: 15,
+        ellipseDistanceX: 50,
+        ellipseDistanceY: 30,
+        randomX: 0,
+        randomY: 0    
+    },
+  
+    /************************* LOVE *************************/
+    // THELOVERS: 11,
     {
         t: 0,
         timeIncrement: 0.001,
@@ -17,7 +170,7 @@ let TarotVizEnums = [
         randomY: 0    
     },
     
-    // 1. THREEOFSWORDS
+    // NINEOFCUPS: 12,
     {
         t: 0,
         timeIncrement: 0.001,
@@ -32,7 +185,7 @@ let TarotVizEnums = [
         randomY: 0    
     },
     
-    // 2. NINEOFCUPS
+    // THREEOFSWORDS: 13,
     {
         t: 0,
         timeIncrement: 0.005,
@@ -47,7 +200,7 @@ let TarotVizEnums = [
         randomY: 0    
     },
     
-    // 3. THREEOFCUPS
+    // THREEOFCUPS: 14,
     {
         t: 0,
         timeIncrement: 0.001,
@@ -62,7 +215,7 @@ let TarotVizEnums = [
         randomY: 0    
     },
     
-    // 4. TWOOFCUPS
+    // TWOOFCUPS: 15,
     {
         t: 0,
         timeIncrement: 0.001,
@@ -75,44 +228,7 @@ let TarotVizEnums = [
         ellipseDistanceY: 55,
         randomX: 5,
         randomY: 0    
-    },
-    
-    /****** CAREER ******/
-    // SIXOFPENTACLES
-    {
-        t: 0,
-        timeIncrement: 0.01,
-        r: 1,
-        g: 1,
-        b: 1,
-        colorRandom: 250,
-        lineWidth: 20,
-        ellipseDistanceX: 50,
-        ellipseDistanceY: 30,
-        randomX: 0,
-        randomY: 0    
-    }
-
-    // HANGEDWOMAN
-    
-    // KINGOFCUPS
-    
-    // FOUROFSWORDS
-    
-    // EIGHTOFSWORDs
-    
-    
-    /****** LIFE ******/
-    // HIGHPRIESTESS
-    
-    // ACEOFCUPS
-    
-    // THEDEVIL
-    
-    // PRINCESSOFSWORDS
-    
-    // HIEROPHANT
-    
+    },    
   ];
   
   let tarot;
@@ -120,7 +236,7 @@ let TarotVizEnums = [
   function setup() {
     createCanvas(900, 700);
     noStroke();
-    tarot = new Tarot(TarotVizEnums[4]);
+    tarot = new Tarot(TarotVizEnums[0]);
   }
   
   function draw() {
