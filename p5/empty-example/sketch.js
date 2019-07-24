@@ -43,7 +43,7 @@ function setup() {
  capture.size(displayWidth, displayHeight);
  capture.hide();
  video = document.getElementsByTagName("video")[0];
- startVideo();
+//  startVideo();
  //capture.size(320, 240);
  //capture.hide();
 }
@@ -61,8 +61,13 @@ function draw() {
     text("Name", displayWidth / 2 - 30, displayHeight / 2 - 20);
     text("Date of birth (MM/DD)", displayWidth /2 -90, displayHeight /2 + 60);
     //image(img, displayWidth / 2 - 40, displayHeight / 3 + 40);
-  } else if (state === states.QR) { //TODO: change to viz state
-    ellipse(mouseXReal, mouseYReal, 80, 80);
+  } else if (state === states.QR) {
+    // TODO: draw something when we need QR code
+  } else if (state === states.VIZ) {
+    console.log(handPosX + ", " + handPosY);
+    // TODO: use handPosX and handPosY to do a cool visualization
+  } else if (state === states.END) {
+    // TODO: draw something to show the user a fortune
   }
  //image(capture, 0, 0, 320, 240);
 }

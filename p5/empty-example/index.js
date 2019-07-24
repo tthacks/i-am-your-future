@@ -1,24 +1,28 @@
 var video;
+var canvas;
 
 const handimg = document.getElementById("handimage");
 let trackButton = document.getElementById("trackbutton");
 let nextImageButton = document.getElementById("nextimagebutton");
 let updateNote = document.getElementById("updatenote");
-let canvas = document.getElementById("qrcanvas");
 
 let imgindex = 1
 let isVideo = false;
 let model = null;
 
-var mouseXReal = 0;
-var mouseYReal = 0;
+var handPosX = 0;
+var handPosY = 0;
 
 // video.width = 500
 // video.height = 400
 
+window.onload = () => {
+    canvas = document.getElementById("qrcanvas");
+}
+
 const modelParams = {
     flipHorizontal: true,   // flip e.g for video
-    maxNumBoxes: 20,        // maximum number of boxes to detect
+    maxNumBoxes: 2,        // maximum number of boxes to detect
     iouThreshold: 0.5,      // ioU threshold for non-max suppression
     scoreThreshold: 0.85,    // confidence threshold for predictions.
 }
@@ -68,15 +72,14 @@ function toggleVideo() {
 
 
 function runDetection() {
-  console.log(video);
     model.detect(video).then(predictions => {
-      console.log(state);
-        if (state === states.QR) {// TODO: add VIZ
+        if (state === states.VIZ) {
           if (predictions.length > 0) {
-            mouseXReal = predictions[0].bbox[0]
-            mouseYReal = predictions[0].bbox[1]
+              console.log("here");
+            handPosX = predictions[0].bbox[0]
+            handPosY = predictions[0].bbox[1]
           }
-
+        } else if (state === states.QR) {
           var context = canvas.getContext("2d");
           context.clearRect(0, 0, canvas.width, canvas.height);
           canvas.width = video.width;
@@ -93,16 +96,16 @@ function runDetection() {
           });
 
           if (code) {
-            console.log("test");
-          } else {
+            console.log(code);
+            state = states.VIZ;
           }
 
           //console.log("Predictions: ", predictions);
           //model.renderPredictions(predictions, canvas, context, video);
-          if (isVideo) {
-              requestAnimationFrame(runDetection);
-          }
-       }
+        }
+        if (isVideo) {
+            requestAnimationFrame(runDetection);
+        }
 
     });
 }
@@ -115,8 +118,8 @@ function runDetectionImage(img) {
         console.log("X: " + predictions[0].bbox[0])
 
 
-        mouseXReal = predictions[0].bbox[0]
-        mouseYReal = predictions[0].bbox[1]
+        handPosX = predictions[0].bbox[0]
+        handPosY = predictions[0].bbox[1]
 
         model.renderPredictions(predictions, canvas, context, img);
 
@@ -131,4 +134,5 @@ handTrack.load(modelParams).then(lmodel => {
     // runDetectionImage(handimg)
     // trackButton.disabled = false
     // nextImageButton.disabled = false
+    startVideo();
 });
