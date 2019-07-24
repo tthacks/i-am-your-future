@@ -8,12 +8,20 @@ let inp, birthInput;
 let button;
 let rowLength;
 let columnLength;
-let showPane = true;
 let panePos;
 let paneSize;
 let inc = true;
 let dec = false;
- 
+
+const states = {
+  INIT: 0,
+  QR: 1,
+  VIZ: 2,
+  END: 3
+};
+
+var state = states.INIT;
+
 function setup() {
   createCanvas(displayWidth, displayHeight);
   background(0);
@@ -31,14 +39,18 @@ function setup() {
  birthInput.position(displayWidth / 2 - birthInput.width/2, displayHeight / 2 + 80);
  birthInput.input(birthdayEvent);
 
- //capture = createCapture(VIDEO);
+ capture = createCapture(VIDEO);
+ capture.size(displayWidth, displayHeight);
+ capture.hide();
+ video = document.getElementsByTagName("video")[0];
+ startVideo();
  //capture.size(320, 240);
  //capture.hide();
 }
- 
+
 function draw() {
   background(0);
-  if(showPane) {
+  if(state === states.INIT) {
     noStroke();
     fill(color(24,42,84));
     rect(panePos.x, panePos.y, paneSize.x, paneSize.y, 30);
@@ -48,21 +60,24 @@ function draw() {
     textSize(20);
     text("Name", displayWidth / 2 - 30, displayHeight / 2 - 20);
     text("Date of birth (MM/DD)", displayWidth /2 -90, displayHeight /2 + 60);
-    image(img, displayWidth / 2 - 40, displayHeight / 3 + 40);
+    //image(img, displayWidth / 2 - 40, displayHeight / 3 + 40);
+  } else if (state === states.QR) { //TODO: change to viz state
+    ellipse(mouseXReal, mouseYReal, 80, 80);
   }
  //image(capture, 0, 0, 320, 240);
 }
- 
+
+// goes from initial state to reading tarot card
 function changeBG() {
   var val = random(255);
   background(val);
-  showPane = false;
+  state = states.QR;
   inp.remove();
   button.remove();
   birthInput.remove();
   renderReturnData();
 }
- 
+
 function nameEvent() {
  name = this.value();
 }
