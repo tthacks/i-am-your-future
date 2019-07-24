@@ -1,4 +1,4 @@
-//let capture;
+var capture;
 let name = "";
 let month;
 let day;
@@ -60,8 +60,8 @@ function setup() {
 }
 
 function draw() {
-  background(0);
   if(state === states.INIT) {
+    background(0);
     noStroke();
     fill(color(24,42,84));
     rect(panePos.x, panePos.y, paneSize.x, paneSize.y, 30);
