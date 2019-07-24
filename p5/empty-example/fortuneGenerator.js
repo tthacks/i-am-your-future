@@ -40,7 +40,7 @@ const strengths = [ar_strength, ta_strength, ge_strength, can_strength, le_stren
 const weaknesses = [ar_weakness, ta_weakness, ge_weakness, can_weakness, le_weakness, vi_weakness, li_weakness, sc_weakness, sa_weakness, cap_weakness, aq_weakness, pi_weakness];
 
 const career_advice = ["ask for feedback on your performance", "seek out a new project", "help out a teammate", "do something to help someone else", "take time to get some work done", "look for new opportunities"];
-const love_advice = ["tell them how you feel", "schedule some time alone together", "take some time for yourself", "talk about what's been bothering you", "tell them how you feel", "focus on how they feel"];
+const love_advice = ["express feelings", "schedule some time alone together", "take some time for yourself", "talk about what's been bothering you", "tell them how you feel", "focus on how they feel"];
 const life_advice = ["prioritize your commitments", "take some time for yourself", "tidy up your living space", "do something unexpected", "do something that scares you", "reach out to someone you haven't heard from in a while", "take a break", "take on a new challenge"];
 const advice = [career_advice, love_advice, life_advice];
 
@@ -62,9 +62,22 @@ advice1 = advice[questionIndex][(int)(Math.random() * advice[questionIndex].leng
 
 part1 = (int)(Math.random() * 3);
 part2 = (int)(Math.random() * 3);
-
+specialFortune = (int)(Math.random() * 30);
 let ans = "";
 
+if(specialFortune === 0) { //use this for special, unrelated fortunes - mostly as a gag, also to mix it up
+    specialIndex = (int)(Math.random() * 3);
+    if(specialIndex === 0) {
+        ans = ans + "The spirits can tell that you don't really believe in fortunes, and want you to try harder next time.";
+    }
+    else if (specialIndex === 0) {
+        ans = ans + "The stars realize that someone left a curse on you, and quickly remove it! You're welcome.";
+    }
+    else {
+        ans = ans + "Keeee heh ha mo-atata... Keeee ha ha mo-atatata... Eee na ro sheho-to bati... YEEEEEeeeee!\n ...Aha. Yes. It has come into view... The great happiness from the stars is attempting to visit you... will you welcome it?";
+    }
+}
+else {
 if(part1 === 0) {
     ans = ans + "As a " + sign + " you are " + strength1 + ". This usually comes in handy for " + questionRequest + ", but you may face some roadblocks because you are also " + weakness1, ".";
 }
@@ -84,6 +97,7 @@ else if(part2 === 1) {
  else {
     ans = ans + "\n" + noun + " may try to " + advice1 + " and might be a good idea for you to do the same.";
 }
-ans = ans + "\nAnd as always, remember... bad times... are just times that are bad!";
+ans = ans + "\nMay happiness find you and yours... And remember that bad times... are just times that are bad.";
+}
 return ans;
 }
