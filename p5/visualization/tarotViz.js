@@ -251,7 +251,7 @@ let TarotVizEnums = [
   function setupViz() {
     // createCanvas(900, 700);
     noStroke();
-    vTarot = new Tarot(TarotVizEnums[tarot.value]);
+    vTarot = new Tarot(TarotVizEnums[tarot.value - 1]);
   }
   
   function drawViz() {
