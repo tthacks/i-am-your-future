@@ -1,6 +1,21 @@
 /* Interactive visualization for Tarot reader */
 
 let TarotVizEnums = [
+    // Main background: 0,
+    {
+        t: 0,
+        timeIncrement: 0.001,
+        r: 150,
+        g: 50,
+        b: 100,
+        colorRandom: 100,
+        lineWidth: 10,
+        ellipseDistanceX: 40,
+        ellipseDistanceY: 25,
+        randomX: 0,
+        randomY: 0  
+    },
+  
     /************************* CAREER *************************/
     // SIXOFPENTACLES: 1,
     {
@@ -162,12 +177,12 @@ let TarotVizEnums = [
         r: 150,
         g: 50,
         b: 100,
-        colorRandom: 100,
+        colorRandom: 70,
         lineWidth: 10,
         ellipseDistanceX: 40,
         ellipseDistanceY: 25,
-        randomX: 0,
-        randomY: 0    
+        randomX: 5,
+        randomY: 5    
     },
     
     // NINEOFCUPS: 12,
