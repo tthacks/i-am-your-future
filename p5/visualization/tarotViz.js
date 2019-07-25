@@ -233,10 +233,10 @@ let TarotVizEnums = [
   
   let vTarot;
   
-  function setupViz() {
+  function setupViz(value) {
     // createCanvas(900, 700);
     noStroke();
-    vTarot = new Tarot(TarotVizEnums[tarot.value - 1]);
+    vTarot = new Tarot(TarotVizEnums[value]);
   }
   
   function drawViz() {

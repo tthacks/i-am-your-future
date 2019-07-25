@@ -123,7 +123,7 @@ function qrToTarot(code) {
     }
     state = states.VIZ;
     tarot = TarotEnum.properties[parseInt(code.data)];
-    setupViz();
+    setupViz(tarot.value);
     setTimeout(transitionToEnd, 10000);
 }
 

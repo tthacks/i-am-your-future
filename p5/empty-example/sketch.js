@@ -61,6 +61,7 @@ function setup() {
   capture.size(displayWidth, displayHeight);
   capture.hide();
   video = document.getElementsByTagName("video")[0];
+  setupViz(0);
 //  startVideo();
  //capture.size(320, 240);
  //capture.hide();
@@ -68,6 +69,7 @@ function setup() {
 
 function draw() {
   if(state === states.INIT) {
+    drawViz();
     textSize(50);
     textFont(reenieBeanie);
     fill(250, 250, 255);
