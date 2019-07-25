@@ -89,15 +89,15 @@ else {
 }
 
 if (part2 === 0) {
-    ans = ans + "\nDon't let " + noun + " take advantage of your " + weakness2 + " nature. It may be wise to " + advice1 + ".";
+    ans = ans + ". Don't let " + noun + " take advantage of your " + weakness2 + " nature. It may be wise to " + advice1 + ".";
 }
 else if(part2 === 1) {
-    ans = ans + "\nIf you " + advice1 + ", you may start to find balance in your " + questionRequest + " again.";
+    ans = ans + "If you " + advice1 + ", you may start to find balance in your " + questionRequest + " again.";
 }
  else {
-    ans = ans + "\n" + noun + " may try to " + advice1 + " and might be a good idea for you to do the same.";
+    ans = ans + "" + noun + " may try to " + advice1 + " and might be a good idea for you to do the same.";
 }
-ans = ans + "\nMay happiness find you and yours... And remember that bad times... are just times that are bad.";
+ans = ans + " May happiness find you and yours... And remember that bad times... are just times that are bad.";
 }
 return ans;
 }
