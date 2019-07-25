@@ -39,6 +39,8 @@ function preload() {
   robotoLite = loadFont('assets/Roboto-Light.ttf');
 }
 
+var oldDisplayWidth;
+var oldDisplayHeight;
 
 function setup() {
   createCanvas(displayWidth, displayHeight);
@@ -62,10 +64,20 @@ function setup() {
   capture.hide();
   video = document.getElementsByTagName("video")[0];
   setupViz(0);
+
+  oldDisplayHeight = displayHeight;
+  oldDisplayWidth = displayWidth;
 //  startVideo();
  //capture.size(320, 240);
  //capture.hide();
 }
+
+// state = states.END;
+// name = "eee";
+// sign = "Leo";
+// tarot = {name: "Three of Swords", value: 13, type: "Love"}; 
+// fortune = "rejjhgrjehgkrhc gjkrhgkhrtkghkrtg hjkrthgkrtghj khvjldsjv knvkren vekrjh giehgvj krenkv  njkrenve krhvukdhvie hrierhver";
+
 
 function draw() {
   if(state === states.INIT) {
@@ -87,18 +99,26 @@ function draw() {
     //image(img, displayWidth / 2 - 40, displayHeight / 3 + 40);
   } else if (state === states.QR) {
     // TODO: draw something when we need QR code
+    drawViz();
+    image(capture, displayWidth / 4, displayHeight /4 , 480, 300);
+
   } else if (state === states.VIZ) {
     drawViz();
   } else if (state === states.END) {
     // TODO: draw something to show the user a fortune
+    drawViz();
+    textSize(60);
+    textFont(reenieBeanie);
+    textAlign(CENTER, TOP);
+    fill(250, 250, 255);
+    text(fortune, 200, 200, displayWidth - 200, displayHeight - 200);
   }
  //image(capture, 0, 0, 320, 240);
 }
 
 // goes from initial state to reading tarot card
 function changeBG() {
-  var val = random(255);
-  background(val);
+  background(10, 10);
   state = states.QR;
   inp.remove();
   button.remove();

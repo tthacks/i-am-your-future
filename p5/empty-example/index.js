@@ -1,5 +1,5 @@
 var video;
-var canvas;
+var qrcanvas;
 
 const handimg = document.getElementById("handimage");
 let trackButton = document.getElementById("trackbutton");
@@ -55,7 +55,7 @@ var tarot;
 // video.height = 400
 
 window.onload = () => {
-    canvas = document.getElementById("qrcanvas");
+    qrcanvas = document.getElementById("qrcanvas");
     // Load the model.
     handTrack.load(modelParams).then(lmodel => {
         // detect objects in the image.
@@ -127,10 +127,11 @@ function qrToTarot(code) {
     setTimeout(transitionToEnd, 10000);
 }
 
+var fortune;
+
 function transitionToEnd() {
     state = states.END;
-    //alert("Hello, " + name + "\nYour sign is " + sign + getSignEmoji(sign));
-    alert(getFortune(sign, tarot.type.toLowerCase()));
+    fortune = getFortune(sign, tarot.type.toLowerCase());
 }
 
 
@@ -138,21 +139,20 @@ function runDetection() {
     model.detect(video).then(predictions => {
         if (state === states.VIZ) {
           if (predictions.length > 0) {
-              console.log("here");
             handPosX = predictions[0].bbox[0]
             handPosY = predictions[0].bbox[1]
           }
         } else if (state === states.QR) {
-          var context = canvas.getContext("2d");
-          context.clearRect(0, 0, canvas.width, canvas.height);
-          canvas.width = video.width;
-          canvas.height = video.height;
+          var context = qrcanvas.getContext("2d");
+          context.clearRect(0, 0, qrcanvas.width, qrcanvas.height);
+          qrcanvas.width = video.width;
+          qrcanvas.height = video.height;
 
           context.save();
           context.drawImage(video, 0, 0, video.width, video.height);
           context.restore();
 
-          var imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+          var imageData = context.getImageData(0, 0, qrcanvas.width, qrcanvas.height);
 
           var code = jsQR(imageData.data, imageData.width, imageData.height, {
             inversionAttempts: "dontInvert",
