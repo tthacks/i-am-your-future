@@ -172,11 +172,4 @@ function renderReturnData() {
   }
 
   sign = getHoroscopeSign(birthday);
-<<<<<<< HEAD
-  alert(getFortune(sign, "love")); //TODO: put in question
-  alert(readTarot(0)) //TODO: put in card to read
-
-  alert("Hello, " + name + "\nYour sign is " + sign + getSignEmoji(sign));
-=======
->>>>>>> 6321661596154e7d07d78d48928e67d251ab4ad5
 }
