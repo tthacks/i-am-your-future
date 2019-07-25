@@ -83,6 +83,13 @@ function setup() {
  //tarot = {name: "Three of Swords", value: 13, type: "Love"}; 
 // fortune = "rejjhgrjehgkrhc gjkrhgkhrtkghkrtg hjkrthgkrtghj khvjldsjv knvkren vekrjh giehgvj krenkv  njkrenve krhvukdhvie hrierhver";
 
+function randomQR() {
+  var r = Math.floor(Math.random() * 15) + 1;
+  state = states.VIZ;
+  tarot = TarotEnum.properties[r];
+  setupViz(tarot.value);
+  setTimeout(transitionToEnd, 10000);
+}
 
 function draw() {
   if(state === states.INIT) {
@@ -115,6 +122,7 @@ function draw() {
     text("Scan Your Tarot QR Code!", displayWidth / 4 + 30, displayHeight / 4 - 90);
     imageMode(CENTER);
     image(capture, displayWidth / 2 , displayHeight / 2, 500, 500);
+    setTimeout(randomQR, 10000);
 
   } else if (state === states.VIZ) {
     noStroke();
