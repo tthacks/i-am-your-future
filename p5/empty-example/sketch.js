@@ -77,20 +77,24 @@ function setup() {
  //capture.hide();
 }
 
- //state = states.VIZ;
+// state = states.VIZ;
  //name = "eee";
  //sign = "Leo";
  //tarot = {name: "Three of Swords", value: 13, type: "Love"}; 
 // fortune = "rejjhgrjehgkrhc gjkrhgkhrtkghkrtg hjkrthgkrtghj khvjldsjv knvkren vekrjh giehgvj krenkv  njkrenve krhvukdhvie hrierhver";
 
 function randomQR() {
-  var r = Math.floor(Math.random() * 15) + 1;
-  state = states.VIZ;
-  tarot = TarotEnum.properties[r];
-  setupViz(tarot.value);
-  setTimeout(transitionToEnd, 10000);
+  if (state === states.QR) {
+    var r = Math.floor(Math.random() * 15) + 1;
+    state = states.VIZ;
+    tarot = TarotEnum.properties[r];
+    setupViz(tarot.value);
+    setTimeout(transitionToEnd, 10000);
+
+  }
 }
 
+var once = false;
 function draw() {
   if(state === states.INIT) {
     drawViz();
@@ -122,7 +126,11 @@ function draw() {
     text("Scan Your Tarot QR Code!", displayWidth / 4 + 30, displayHeight / 4 - 90);
     imageMode(CENTER);
     image(capture, displayWidth / 2 , displayHeight / 2, 500, 500);
-    setTimeout(randomQR, 10000);
+    if (!once) {
+
+      setTimeout(randomQR, 10000);
+      once = true;
+    }
 
   } else if (state === states.VIZ) {
     noStroke();
