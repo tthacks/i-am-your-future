@@ -33,10 +33,15 @@ const states = {
 
 var state = states.INIT;
 
-let reenieBeanie, robotoLite;
+let reenieBeanie, robotoLite, oleo;
 function preload() {
   reenieBeanie = loadFont('assets/reenieBeanie.ttf');
   robotoLite = loadFont('assets/Roboto-Light.ttf');
+  oleoBold = loadFont('assets/OleoScriptSwashCaps-Bold.ttf');
+  oleoReg = loadFont('assets/OleoScriptSwashCaps-Regular.ttf');
+
+
+  
 }
 
 var oldDisplayWidth;
@@ -47,7 +52,7 @@ function setup() {
   background(0);
   name = "";
   birthday = "";
-  panePos = createVector(displayWidth / 3, displayHeight / 4);
+  panePos = createVector(displayWidth / 2, displayHeight / 2);
   paneSize = createVector(displayWidth / 3, displayHeight / 2);
   button = createButton('Tell Me My Future');
   button.position(displayWidth / 2 - button.width / 2, displayHeight / 2 + 160);
@@ -72,47 +77,66 @@ function setup() {
  //capture.hide();
 }
 
-// state = states.END;
-// name = "eee";
-// sign = "Leo";
-// tarot = {name: "Three of Swords", value: 13, type: "Love"}; 
+ //state = states.VIZ;
+ //name = "eee";
+ //sign = "Leo";
+ //tarot = {name: "Three of Swords", value: 13, type: "Love"}; 
 // fortune = "rejjhgrjehgkrhc gjkrhgkhrtkghkrtg hjkrthgkrtghj khvjldsjv knvkren vekrjh giehgvj krenkv  njkrenve krhvukdhvie hrierhver";
 
 
 function draw() {
   if(state === states.INIT) {
     drawViz();
-    textSize(50);
+    textSize(80);
+    rectMode(CENTER);
     textFont(reenieBeanie);
     fill(250, 250, 255);
-    text("I Am Your Future", displayWidth / 3 + 60, displayHeight / 4);
+    text("I Am Your Future", displayWidth / 3 , displayHeight / 4);
     noStroke();
     fill(color(24,42,84));
     rect(panePos.x, panePos.y + 30, paneSize.x, paneSize.y, 30);
     textSize(30);
     textFont(robotoLite);
     fill(250, 250, 255);
-    text("Let's Get To Know You!", displayWidth / 3 + 60, displayHeight / 2 - 90);
+    text("Let's Get To Know You!", displayWidth / 3 + 90, displayHeight / 2 - 90);
     textSize(20);
     text("Name", displayWidth / 2 - 30, displayHeight / 2 - 20);
     text("Date of birth (MM/DD)", displayWidth /2 -90, displayHeight /2 + 60);
     //image(img, displayWidth / 2 - 40, displayHeight / 3 + 40);
   } else if (state === states.QR) {
     // TODO: draw something when we need QR code
+    noStroke();
     drawViz();
-    image(capture, displayWidth / 4, displayHeight /4 , 480, 300);
+    textFont(oleoBold);
+    textSize(60);
+    rectMode(CENTER);
+    stroke(0);
+    fill(250, 250, 255);
+    text("Scan Your Tarot QR Code!", displayWidth / 4 + 30, displayHeight / 4 - 90);
+    imageMode(CENTER);
+    image(capture, displayWidth / 2 , displayHeight / 2, 500, 500);
 
   } else if (state === states.VIZ) {
+    noStroke();
     drawViz();
+    textSize(80);
+    textFont(oleoBold);
+    rectMode(CENTER);
+    stroke(0);
+    fill(250, 250, 255);
+    textAlign(CENTER);
+    text("Wave Your Hand To Gather Energy From The Universe!",displayWidth / 2, displayHeight / 2, displayWidth - 200, displayHeight - 200);
   } else if (state === states.END) {
     // TODO: draw something to show the user a fortune
+    noStroke();
     drawViz();
+    stroke(0);
     textSize(60);
-    textFont(reenieBeanie);
-    textAlign(CENTER, TOP);
+    textFont(oleoBold);
+    rectMode(CENTER);
     fill(250, 250, 255);
-    text(fortune, 200, 200, displayWidth - 200, displayHeight - 200);
-  }
+    text(fortune, displayWidth / 2, displayHeight / 2, displayWidth - 200, displayHeight - 200);
+    }
  //image(capture, 0, 0, 320, 240);
 }
 

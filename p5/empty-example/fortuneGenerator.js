@@ -14,7 +14,7 @@ const le_strength = ["creative", "passionate", "generous", "warm-hearted", "chee
 const le_weakness = ["arrogant", "stubborn", "lazy", "inflexible", "self-centered"];
 
 const vi_strength = ["loyal", "analytical", "kind", "hardworking", "practical"];
-const vi_weakness = ["shy", "worry", "critical", "businesslike"];
+const vi_weakness = ["shy", "worry", "critical", "business-like"];
 
 const li_strength = ["cooperative", "diplomatic", "gracious", "social", "fair"];
 const li_weakness = ["indecisive", "non-confrontational", "carrying a grudge", "self-pity"];
@@ -60,30 +60,30 @@ else {
 
 advice1 = advice[questionIndex][(int)(Math.random() * advice[questionIndex].length)];
 
-part1 = (int)(Math.random() * 3);
-part2 = (int)(Math.random() * 3);
+part1 = (int)(Math.random() * 2);
+part2 = (int)(Math.random() * 2);
 
 let ans = "";
 
 if(part1 === 0) {
-    ans = ans + "As a " + sign + " you are " + strength1 + ". This usually comes in handy for " + questionRequest + ", but you may face some roadblocks because you are also " + weakness1, ".";
+    ans = ans + "As a " + sign + " you are " + strength1 + ". This usually comes in handy for " + questionRequest + ", but you may face some roadblocks because you are also " + weakness1 + ".";
 }
 else if (part1 === 1) {
-     ans = ans + "You have been relying too heavily on your ability to be " + strength1 + ". If you're not careful, you could have some trouble in " + questionRequest + ". Try not to be too " + weakness1 + ".";
+    ans = ans + "You have been relying too heavily on your ability to be " + strength1 + ". If you're not careful, you could have some trouble in " + questionRequest + ". Try not to be too " + weakness1 + ".";
 } 
 else { 
-   ans = ans + "Your tendency to be ", weakness1, "may be controlling your", questionRequest, ". Don't forget: you are also", strength1, "and you should take advantage of that!";
+   ans = ans + "Your tendency to be " + weakness1 + "may be controlling your" + questionRequest + ". Don't forget: you are also" + strength1 + "and you should take advantage of that!";
 }
 
 if (part2 === 0) {
-    ans = ans + "\nDon't let " + noun + " take advantage of your " + weakness2 + " nature. It may be wise to " + advice1 + ".";
+    ans = ans + ". Don't let " + noun + " take advantage of your " + weakness2 + " nature. It may be wise to " + advice1 + ".";
 }
 else if(part2 === 1) {
-    ans = ans + "\nIf you " + advice1 + ", you may start to find balance in your " + questionRequest + " again.";
+    ans = ans + "If you " + advice1 + ", you may start to find balance in your " + questionRequest + " again.";
 }
  else {
-    ans = ans + "\n" + noun + " may try to " + advice1 + " and might be a good idea for you to do the same.";
+    ans = ans + "" + noun + " may try to " + advice1 + " and might be a good idea for you to do the same.";
 }
-ans = ans + "\nAnd as always, remember... bad times... are just times that are bad!";
+ans = ans + " And as always, remember... bad times... are just times that are bad!";
 return ans;
 }
