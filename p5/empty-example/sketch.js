@@ -39,9 +39,9 @@ function preload() {
   robotoLite = loadFont('assets/Roboto-Light.ttf');
   oleoBold = loadFont('assets/OleoScriptSwashCaps-Bold.ttf');
   oleoReg = loadFont('assets/OleoScriptSwashCaps-Regular.ttf');
-
-
-  
+  caviarDreams = loadFont('assets/CaviarDreams.ttf');
+  caviarDreamsBold = loadFont('assets/Caviar_Dreams_Bold.ttf');
+  caviarDreamsItalic = loadFont('assets/CaviarDreams_Italic.ttf');
 }
 
 var oldDisplayWidth;
@@ -89,7 +89,7 @@ function randomQR() {
     state = states.VIZ;
     tarot = TarotEnum.properties[r];
     setupViz(tarot.value);
-    setTimeout(transitionToEnd, 10000);
+    setTimeout(transitionToEnd, 3000);
 
   }
 }
@@ -107,9 +107,9 @@ function draw() {
     fill(color(24,42,84));
     rect(panePos.x, panePos.y + 30, paneSize.x, paneSize.y, 30);
     textSize(30);
-    textFont(robotoLite);
+    textFont(caviarDreams);
     fill(250, 250, 255);
-    text("Let's Get To Know You!", displayWidth / 3 + 90, displayHeight / 2 - 90);
+    text("So, Tell Me About You", displayWidth / 3 + 90, displayHeight / 2 - 90);
     textSize(20);
     text("Name", displayWidth / 2 - 30, displayHeight / 2 - 20);
     text("Date of birth (MM/DD)", displayWidth /2 -90, displayHeight /2 + 60);
@@ -118,12 +118,12 @@ function draw() {
     // TODO: draw something when we need QR code
     noStroke();
     drawViz();
-    textFont(oleoBold);
+    textFont(caviarDreams);
     textSize(60);
     rectMode(CENTER);
     stroke(0);
     fill(250, 250, 255);
-    text("Scan Your Tarot QR Code!", displayWidth / 4 + 30, displayHeight / 4 - 90);
+    text("Scan Your Tarot QR Code", displayWidth / 4 + 30, displayHeight / 4 - 90);
     imageMode(CENTER);
     image(capture, displayWidth / 2 , displayHeight / 2, 500, 500);
     if (!once) {
@@ -136,19 +136,19 @@ function draw() {
     noStroke();
     drawViz();
     textSize(80);
-    textFont(oleoBold);
+    textFont(caviarDreams);
     rectMode(CENTER);
     stroke(0);
     fill(250, 250, 255);
     textAlign(CENTER);
-    text("Wave Your Hand To Gather Energy From The Universe!",displayWidth / 2, displayHeight / 2, displayWidth - 200, displayHeight - 200);
+    text("Wave Your Hand And Gather Energy From The Universe!",displayWidth / 2, displayHeight / 2, displayWidth - 200, displayHeight - 200);
   } else if (state === states.END) {
     // TODO: draw something to show the user a fortune
     noStroke();
     drawViz();
     stroke(0);
     textSize(60);
-    textFont(oleoBold);
+    textFont(caviarDreams);
     rectMode(CENTER);
     fill(250, 250, 255);
     text(fortune, displayWidth / 2, displayHeight / 2, displayWidth - 200, displayHeight - 200);
