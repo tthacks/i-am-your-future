@@ -47,21 +47,36 @@ function preload() {
 var oldDisplayWidth;
 var oldDisplayHeight;
 
+let textX;
+let textY;
+let textGapY;
+
 function setup() {
   createCanvas(displayWidth, displayHeight);
   background(0);
   name = "";
   birthday = "";
   panePos = createVector(displayWidth / 2, displayHeight / 2);
-  paneSize = createVector(displayWidth / 3, displayHeight / 2);
-  button = createButton('Tell Me My Future');
-  button.position(displayWidth / 2 - button.width / 2, displayHeight / 2 + 160);
+  paneSize = createVector(displayWidth / 3, displayHeight / 3);
+
+  textX = displayWidth/3 + 90 + 120;
+  textY = displayHeight/2 - 120;
+  textGapY = 60;
+
+
+  button = createButton('->');
+  button.position(displayWidth / 2 - button.width / 2 - 20, displayHeight / 2 + 150);
   button.mousePressed(changeBG);
+  button.size(30, 30);
+
   inp = createInput('');
-  inp.position(displayWidth/2 - inp.width / 2, displayHeight/2);
+  inp.position(textX+28, textY + textGapY*1.5);
+  inp.size(180, 20);
   inp.input(nameEvent);
+
   birthInput = createInput('');
-  birthInput.position(displayWidth / 2 - birthInput.width/2, displayHeight / 2 + 80);
+  birthInput.position(textX+50, textY + textGapY*3.5);
+  birthInput.size(120, 20)
   birthInput.input(birthdayEvent);
 
   capture = createCapture(VIDEO);
@@ -103,17 +118,22 @@ function draw() {
     rectMode(CENTER);
     textFont(reenieBeanie);
     fill(250, 250, 255);
-    text("I Am Your Future", displayWidth / 3 , displayHeight / 4);
+    text("I Am Your Future", displayWidth /3 + 95 , displayHeight / 4);
     noStroke();
-    fill(color(24,42,84));
-    rect(panePos.x, panePos.y + 30, paneSize.x, paneSize.y, 30);
+    //fill(color(153, 51, 255, 20));
+    fill(color(134, 0, 245, 200));
+    
+    rect(panePos.x, panePos.y, paneSize.x-60, paneSize.y, 30);
     textSize(30);
     textFont(caviarDreams);
     fill(250, 250, 255);
-    text("Tell us about you", displayWidth / 3 + 90, displayHeight / 2 - 90);
+
+    text("First, let us stalk you", textX, textY);
     textSize(20);
-    text("Name", displayWidth / 2 - 30, displayHeight / 2 - 20);
-    text("Date of birth (MM/DD)", displayWidth /2 -90, displayHeight /2 + 60);
+    
+    text("Your beautiful name", textX + 20, textY + textGapY);
+    text("The first day you saw the light of the world (MM/DD)", textX-100, textY + textGapY*3);
+
     //image(img, displayWidth / 2 - 40, displayHeight / 3 + 40);
   } else if (state === states.QR) {
     /* The page to scan tarot QR code */
