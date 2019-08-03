@@ -33,7 +33,7 @@ const states = {
 
 var state = states.INIT;
 
-let reenieBeanie, robotoLite, oleo;
+let reenieBeanie, robotoLite, oleo, caviarDreams, caviarDreamsBold;
 function preload() {
   reenieBeanie = loadFont('assets/reenieBeanie.ttf');
   robotoLite = loadFont('assets/Roboto-Light.ttf');
@@ -97,6 +97,7 @@ function randomQR() {
 var once = false;
 function draw() {
   if(state === states.INIT) {
+    /* The main page to get user input */
     drawViz();
     textSize(80);
     rectMode(CENTER);
@@ -109,21 +110,21 @@ function draw() {
     textSize(30);
     textFont(caviarDreams);
     fill(250, 250, 255);
-    text("So, Tell Me About You", displayWidth / 3 + 90, displayHeight / 2 - 90);
+    text("Tell us about you", displayWidth / 3 + 90, displayHeight / 2 - 90);
     textSize(20);
     text("Name", displayWidth / 2 - 30, displayHeight / 2 - 20);
     text("Date of birth (MM/DD)", displayWidth /2 -90, displayHeight /2 + 60);
     //image(img, displayWidth / 2 - 40, displayHeight / 3 + 40);
   } else if (state === states.QR) {
-    // TODO: draw something when we need QR code
+    /* The page to scan tarot QR code */
     noStroke();
     drawViz();
-    textFont(caviarDreams);
+    textFont(caviarDreamsBold);
     textSize(60);
     rectMode(CENTER);
     stroke(0);
     fill(250, 250, 255);
-    text("Scan Your Tarot QR Code", displayWidth / 4 + 30, displayHeight / 4 - 90);
+    text("Take a deep breath in \n\n Pick your Tarot card \n\n Scan Your Tarot QR code", displayWidth / 4 + 30, displayHeight / 4 - 90);
     imageMode(CENTER);
     image(capture, displayWidth / 2 , displayHeight / 2, 500, 500);
     if (!once) {
@@ -133,22 +134,23 @@ function draw() {
     }
 
   } else if (state === states.VIZ) {
+    /* Interactive page where user waves hand */
     noStroke();
     drawViz();
     textSize(80);
-    textFont(caviarDreams);
+    textFont(caviarDreamsBold);
     rectMode(CENTER);
     stroke(0);
     fill(250, 250, 255);
     textAlign(CENTER);
-    text("Wave Your Hand And Gather Energy From The Universe!",displayWidth / 2, displayHeight / 2, displayWidth - 200, displayHeight - 200);
+    text("Wave your hand \n\n to gather the energy \n\n from the universe!",displayWidth / 2, displayHeight / 2, displayWidth - 200, displayHeight - 200);
   } else if (state === states.END) {
-    // TODO: draw something to show the user a fortune
+    /* Final page to show fortune message */
     noStroke();
     drawViz();
     stroke(0);
     textSize(60);
-    textFont(caviarDreams);
+    textFont(caviarDreamsBold);
     rectMode(CENTER);
     fill(250, 250, 255);
     text(fortune, displayWidth / 2, displayHeight / 2, displayWidth - 200, displayHeight - 200);

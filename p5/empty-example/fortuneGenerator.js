@@ -45,59 +45,61 @@ const life_advice = ["prioritize your commitments", "take some time for yourself
 const advice = [career_advice, love_advice, life_advice];
 
 function getFortune(signRequest, questionRequest) {
-let signIndex = signs.indexOf(signRequest);
-let questionIndex = questions.indexOf(questionRequest);
-let strength1 = strengths[signIndex][(int)(Math.random() * strengths[signIndex].length)];
-let weakness1 = weaknesses[signIndex][(int)(Math.random() * weaknesses[signIndex].length)];
-let weakness2 = weaknesses[signIndex][(int)(Math.random() * weaknesses[signIndex].length)];
-let noun;
-if (questionIndex === 1) {
-    noun = "your partner";
-}
-else {
-    noun = "people";
-}
-
-advice1 = advice[questionIndex][(int)(Math.random() * advice[questionIndex].length)];
-
-part1 = (int)(Math.random() * 2);
-part2 = (int)(Math.random() * 2);
-specialFortune = (int)(Math.random() * 30);
-let ans = "";
-
-if(specialFortune === 0) { //use this for special, unrelated fortunes - mostly as a gag, also to mix it up
-    specialIndex = (int)(Math.random() * 3);
-    if(specialIndex === 0) {
-        ans = ans + "The spirits can tell that you don't really believe in fortunes, and want you to try harder next time.";
-    }
-    else if (specialIndex === 0) {
-        ans = ans + "The stars realize that someone left a curse on you, and quickly remove it! You're welcome.";
+    let signIndex = signs.indexOf(signRequest);
+    let questionIndex = questions.indexOf(questionRequest);
+    let strength1 = strengths[signIndex][(int)(Math.random() * strengths[signIndex].length)];
+    let weakness1 = weaknesses[signIndex][(int)(Math.random() * weaknesses[signIndex].length)];
+    let weakness2 = weaknesses[signIndex][(int)(Math.random() * weaknesses[signIndex].length)];
+    let noun;
+    if (questionIndex === 1) {
+        noun = "your partner";
     }
     else {
-        ans = ans + "Keeee heh ha mo-atata... Keeee ha ha mo-atatata... Eee na ro sheho-to bati... YEEEEEeeeee!\n ...Aha. Yes. It has come into view... The great happiness from the stars is attempting to visit you... will you welcome it?";
+        noun = "people";
     }
-}
-else {
-if(part1 === 0) {
-    ans = ans + "As a " + sign + " you are " + strength1 + ". This usually comes in handy for " + questionRequest + ", but you may face some roadblocks because you are also " + weakness1 + ".";
-}
-else if (part1 === 1) {
-    ans = ans + "You have been relying too heavily on your ability to be " + strength1 + ". If you're not careful, you could have some trouble in " + questionRequest + ". Try not to be too " + weakness1 + ".";
-} 
-else { 
-   ans = ans + "Your tendency to be " + weakness1 + "may be controlling your" + questionRequest + ". Don't forget: you are also" + strength1 + "and you should take advantage of that!";
-}
 
-if (part2 === 0) {
-    ans = ans + ". Don't let " + noun + " take advantage of your " + weakness2 + " nature. It may be wise to " + advice1 + ".";
-}
-else if(part2 === 1) {
-    ans = ans + "If you " + advice1 + ", you may start to find balance in your " + questionRequest + " again.";
-}
- else {
-    ans = ans + "" + noun + " may try to " + advice1 + " and might be a good idea for you to do the same.";
-}
-ans = ans + " May happiness find you and yours... And remember that bad times... are just times that are bad.";
-}
-return ans;
+    advice1 = advice[questionIndex][(int)(Math.random() * advice[questionIndex].length)];
+
+    part1 = (int)(Math.random() * 2);
+    part2 = (int)(Math.random() * 2);
+    specialFortune = (int)(Math.random() * 30);
+    let ans = "";
+
+    if (specialFortune === 0) { //use this for special, unrelated fortunes - mostly as a gag, also to mix it up
+        specialIndex = (int)(Math.random() * 3);
+        if (specialIndex === 0) {
+            ans = ans + "The spirits can tell that you don't really believe in fortunes, and want you to try harder next time.";
+        }
+        else if (specialIndex === 0) {
+            ans = ans + "The stars realize that someone left a curse on you, and quickly remove it! You're welcome.";
+        }
+        else {
+            ans = ans + "Keeee heh ha mo-atata... Keeee ha ha mo-atatata... Eee na ro sheho-to bati... YEEEEEeeeee!\n ...Aha. Yes. It has come into view... The great happiness from the stars is attempting to visit you... will you welcome it?";
+        }
+    }
+    else {
+        if (part1 === 0) {
+            ans = ans + "As a " + sign + " you are " + strength1 + ". This usually comes in handy for " + questionRequest + ", but you may face some roadblocks because you are also " + weakness1 + ".";
+        }
+        else if (part1 === 1) {
+            ans = ans + "You have been relying too heavily on your ability to be " + strength1 + ". If you're not careful, you could have some trouble in " + questionRequest + ". Try not to be too " + weakness1 + ".";
+        } 
+        else { 
+        ans = ans + "Your tendency to be " + weakness1 + "may be controlling your" + questionRequest + ". Don't forget: you are also" + strength1 + "and you should take advantage of that!";
+        }
+        ans += "\n\n";
+
+        if (part2 === 0) {
+            ans = ans + "Don't let " + noun + " take advantage of your " + weakness2 + " nature. It may be wise to " + advice1 + ".";
+        }
+        else if (part2 === 1) {
+            ans = ans + "If you " + advice1 + ", you may start to find balance in your " + questionRequest + " again.";
+        }
+        else {
+            ans = ans + noun + " may try to " + advice1 + " and might be a good idea for you to do the same.";
+        }
+        ans += "\n\n";
+        ans = ans + " May happiness find you and yours.";
+    }
+    return ans;
 }
