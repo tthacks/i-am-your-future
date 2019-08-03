@@ -56,26 +56,26 @@ function setup() {
   background(0);
   name = "";
   birthday = "";
-  panePos = createVector(displayWidth / 2, displayHeight / 2);
-  paneSize = createVector(displayWidth / 3, displayHeight / 3);
+  panePos = createVector(displayWidth / 2, displayHeight/2-10);
+  paneSize = createVector(displayWidth / 3 - 80, displayHeight / 3 + 50);
 
   textX = displayWidth/3 + 90 + 120;
-  textY = displayHeight/2 - 120;
-  textGapY = 60;
+  textY = displayHeight/2 - 135;
+  textGapY = 70;
 
-
-  button = createButton('->');
-  button.position(displayWidth / 2 - button.width / 2 - 20, displayHeight / 2 + 150);
+  button = createButton('Next');
+  button.position(displayWidth/2 - button.width/2 - 13, textY + textGapY*3 + 70);
   button.mousePressed(changeBG);
-  button.size(30, 30);
+  button.size(45, 45);
+  button.style('color: white; border-radius: 50%; background-color: purple; border-style:none');
 
   inp = createInput('');
-  inp.position(textX+28, textY + textGapY*1.5);
-  inp.size(180, 20);
+  inp.position(textX+35, textY + textGapY*1.4);
+  inp.size(178, 20);
   inp.input(nameEvent);
 
   birthInput = createInput('');
-  birthInput.position(textX+50, textY + textGapY*3.5);
+  birthInput.position(textX+60, textY + textGapY*2.7 + 28);
   birthInput.size(120, 20)
   birthInput.input(birthdayEvent);
 
@@ -121,7 +121,7 @@ function draw() {
     text("I Am Your Future", displayWidth /3 + 95 , displayHeight / 4);
     noStroke();
     //fill(color(153, 51, 255, 20));
-    fill(color(134, 0, 245, 200));
+    fill(color(164, 0, 220, 140));
     
     rect(panePos.x, panePos.y, paneSize.x-60, paneSize.y, 30);
     textSize(30);
@@ -131,8 +131,8 @@ function draw() {
     text("First, let us stalk you", textX, textY);
     textSize(20);
     
-    text("Your beautiful name", textX + 20, textY + textGapY);
-    text("The first day you saw the light of the world (MM/DD)", textX-100, textY + textGapY*3);
+    text("Your beautiful name", textX + 33, textY + textGapY);
+    text("The first day you saw the light of the world (mm/dd)", textX-100, textY + textGapY*2.7);
 
     //image(img, displayWidth / 2 - 40, displayHeight / 3 + 40);
   } else if (state === states.QR) {
