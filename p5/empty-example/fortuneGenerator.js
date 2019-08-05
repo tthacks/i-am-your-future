@@ -79,18 +79,18 @@ function getFortune(signRequest, questionRequest) {
     }
     else {
         if (part1 === 0) {
-            ans = ans + "As a " + sign + " you are " + strength1 + ". This usually comes in handy for " + questionRequest + ", but you may face some roadblocks because you are also " + weakness1 + ".";
+            ans = ans + "As a " + sign + " you are " + strength1 + ".\n\n This usually comes in handy for " + questionRequest + ",\n but you may face some roadblocks because you are also " + weakness1 + ".";
         }
         else if (part1 === 1) {
-            ans = ans + "You have been relying too heavily on your ability to be " + strength1 + ". If you're not careful, you could have some trouble in " + questionRequest + ". Try not to be too " + weakness1 + ".";
+            ans = ans + "You have been relying too heavily on your ability to be " + strength1 + ".\n\n If you're not careful, you could have some trouble in " + questionRequest + ".\n Try not to be too " + weakness1 + ".";
         } 
         else { 
-        ans = ans + "Your tendency to be " + weakness1 + "may be controlling your" + questionRequest + ". Don't forget: you are also" + strength1 + "and you should take advantage of that!";
+        ans = ans + "Your tendency to be " + weakness1 + "may be controlling your" + questionRequest + ".\n\n Don't forget: you are also" + strength1 + "and you should take advantage of that!";
         }
         ans += "\n\n";
 
         if (part2 === 0) {
-            ans = ans + "Don't let " + noun + " take advantage of your " + weakness2 + " nature. It may be wise to " + advice1 + ".";
+            ans = ans + "Don't let " + noun + " take advantage of your " + weakness2 + " nature.\n It may be wise to " + advice1 + ".";
         }
         else if (part2 === 1) {
             ans = ans + "If you " + advice1 + ", you may start to find balance in your " + questionRequest + " again.";
@@ -99,7 +99,7 @@ function getFortune(signRequest, questionRequest) {
             ans = ans + noun + " may try to " + advice1 + " and might be a good idea for you to do the same.";
         }
         ans += "\n\n";
-        ans = ans + " May happiness find you and yours.";
+        ans = ans + "May happiness find you and yours.";
     }
     return ans;
 }
